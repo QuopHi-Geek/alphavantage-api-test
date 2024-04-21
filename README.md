@@ -56,6 +56,7 @@ Test Steps:
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=CNY&apikey=YOUR_API_KEY
 <br>
 Expected Response:
+<br>
 2. Verify the response status code is 200
 <br>
 3. Verify the response body has a JSON object with properties :
