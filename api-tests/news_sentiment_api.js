@@ -1,15 +1,17 @@
 import axios from "axios";
 import { expect, assert } from "chai";
 
+//### TEST CASES FOR NEWS SENTIMENT API ###
+// 1. Verify a valid request to the News Sentiment API
+// 2. GET news articles with missing or invalid API key
+// 3. GET news articles with invalid news with missing/invalid required parameters
+
 const API_KEY = "I4PV8IE2HO4IPDNB";
 const BASE_URL = "http://www.alphavantage.co/";
 const FUNCTION = "NEWS_SENTIMENT";
 
-//### TEST CASES FOR NEWS SENTIMENT API ###
-// 1. Test a valid request to the News Sentiment API
-// 2. Test the News Sentiment API with an missing or invalid API key
-// 3. Test the News Sentiment API with missing/invalid required parameters
 
+//Test Suite for News Sentiment API 
 
 describe("News Sentiment API", () => {
   it("Verify a valid request to the News Sentiment API", async () => {

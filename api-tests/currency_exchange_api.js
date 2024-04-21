@@ -1,9 +1,6 @@
 import axios from "axios";
 import { expect, assert } from "chai";
-
-const BASE_URL = "https://www.alphavantage.co/";
-const FUNCTION = "CURRENCY_EXCHANGE_RATE";
-const API_KEY = "I4PV8IE2HO4IPDNB";
+import * as fs from "fs";
 
 // ### TEST CASES FOR CURRENCY EXCHANGE API  ###
 // 1. GET the exchange rate from Bitcoin to Chinese Yuan
@@ -11,6 +8,12 @@ const API_KEY = "I4PV8IE2HO4IPDNB";
 // 3. GET the exchange rate with missing required parameters
 // 4. Perform request to the API with a restricted method
 
+
+const BASE_URL = "https://www.alphavantage.co/";
+const FUNCTION = "CURRENCY_EXCHANGE_RATE";
+const API_KEY = "I4PV8IE2HO4IPDNB";
+
+// Test Suite for Currency Exchange API
 
 describe("Currency Exchange API", async () => {
   it("GET the exchange rate from Bitcoin to Chinese Yuan", async () => {
@@ -21,10 +24,17 @@ describe("Currency Exchange API", async () => {
     // Make a request to the API
     const request = await axios.get(
       `${BASE_URL}/query?function=${FUNCTION}&from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}&apikey=${API_KEY}`
-    );
+    ).then((response) => {
+        console.log(response.data);
+        return response;
+      })
+      .catch((error) => {
+        return error;
+      });;
 
     const response = request;
     console.log(response.data);
+
     //assert response status and error
     expect(response.status).to.equal(200);
     assert(!response.data.error);
@@ -35,7 +45,11 @@ describe("Currency Exchange API", async () => {
     const responseTime = endTime - startTime;
     console.log(responseTime);
     expect(responseTime).to.be.lessThan(1000); // 1 second
-    
+
+
+    // Write the response to a file
+    fs.writeFileSync("responses/currency_exchange_response.json", JSON.stringify(response.data));
+
   });
 
 
@@ -46,7 +60,13 @@ describe("Currency Exchange API", async () => {
     // Make a GET request to the API with API key = NULL
     const request = await axios.get(
       `${BASE_URL}/query?function=${FUNCTION}&from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}`
-    );
+    ).then((response) => {
+        console.log(response.data);
+        return response;
+      })
+      .catch((error) => {
+        return error;
+      });;
 
     const response = request;
     console.log(response.data);
@@ -72,7 +92,13 @@ describe("Currency Exchange API", async () => {
 
     const request = await axios.get(
       `${BASE_URL}/query?from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}&apikey=${API_KEY}`
-    );
+    ).then((response) => {
+        console.log(response.data);
+        return response;
+      })
+      .catch((error) => {
+        return error;
+      });;
 
     const response = request;
     console.log(response.data.error);
