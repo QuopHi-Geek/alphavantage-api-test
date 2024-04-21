@@ -29,7 +29,16 @@ npm install mochawesome @faker-js/faker properties-reader rimraf --save
 ##Usage
 - Create a directory to contain the test files
 - to run the tests, run "npx mocha ./api-tests"  (path to test directory) 
+- to generate test report, run "npx mocha ./api-tests --reporter mochawesome" 
+- add scripts property in package.json file for test results generation and files removal on every test
 
+"scripts": {
+    "clean": "rimraf mochawesome-report/",
+    "test": "npm run clean && mocha ./{path-to-test}/*.js --reporter mochawesome"
+  },
+  
+- use "npm test" command to run the all tests
+   
 
 
 ### TEST CASES ###

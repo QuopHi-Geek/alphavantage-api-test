@@ -1,0 +1,235 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 7,
+    "passes": 6,
+    "pending": 1,
+    "failures": 0,
+    "start": "2024-04-21T14:35:19.779Z",
+    "end": "2024-04-21T14:35:21.739Z",
+    "duration": 1960,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 14.285714285714285,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7b1836d7-c257-49e7-b827-73b242e67e5e",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "25ebb250-ec2f-4a0e-a569-236e5d592f14",
+          "title": "Currency Exchange API",
+          "fullFile": "/Users/kod/payrails-alphavantage-test/api-tests/currency_exchange_api.js",
+          "file": "/api-tests/currency_exchange_api.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET the exchange rate from Bitcoin to Chinese Yuan",
+              "fullTitle": "Currency Exchange API GET the exchange rate from Bitcoin to Chinese Yuan",
+              "timedOut": false,
+              "duration": 245,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Define the parameters for the request\nlet FROM_CURRENCY = \"BTC\";\nlet TO_CURRENCY = \"CNY\";\n// Make a request to the API\nconst request = await axios.get(\n  `${BASE_URL}/query?function=${FUNCTION}&from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}&apikey=${API_KEY}`\n);\nconst response = request;\nconsole.log(response.data);\n//assert response status and error\nexpect(response.status).to.equal(200);\nassert(!response.data.error);\n// Assert response time is less than 1 second\nconst startTime = new Date().getTime();\nconst endTime = new Date().getTime();\nconst responseTime = endTime - startTime;\nconsole.log(responseTime);\nexpect(responseTime).to.be.lessThan(1000); // 1 second",
+              "err": {},
+              "uuid": "041dc2eb-12a6-43e2-9214-34db9ebff042",
+              "parentUUID": "25ebb250-ec2f-4a0e-a569-236e5d592f14",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET the exchange rate without providing the API key",
+              "fullTitle": "Currency Exchange API GET the exchange rate without providing the API key",
+              "timedOut": false,
+              "duration": 140,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let FROM_CURRENCY = \"EUR\";\nlet TO_CURRENCY = \"USD\";\n// Make a GET request to the API with API key = NULL\nconst request = await axios.get(\n  `${BASE_URL}/query?function=${FUNCTION}&from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}`\n);\nconst response = request;\nconsole.log(response.data);\n//assert response status and error\nexpect(response.status).to.equal(200); // expected response status should be 401\nassert(!response.data.error);\nassert.property(response.data, \"Error Message\");\nassert.equal(\n  response.data[\"Error Message\"],\n  \"the parameter apikey is invalid or missing. Please claim your free API key on (https://www.alphavantage.co//support/#api-key). It should take less than 20 seconds.\"\n);",
+              "err": {},
+              "uuid": "46a1af15-ad4b-49a1-9804-3d2a0a09021f",
+              "parentUUID": "25ebb250-ec2f-4a0e-a569-236e5d592f14",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET the exchange rate from BTC to EUR with missing required parameters",
+              "fullTitle": "Currency Exchange API GET the exchange rate from BTC to EUR with missing required parameters",
+              "timedOut": false,
+              "duration": 140,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let FROM_CURRENCY = \"BTC\";\nlet TO_CURRENCY = \"EUR\";\n//Make a GET request to the API endpoint without the function parameter\nconst request = await axios.get(\n  `${BASE_URL}/query?from_currency=${FROM_CURRENCY}&to_currency=${TO_CURRENCY}&apikey=${API_KEY}`\n);\nconst response = request;\nconsole.log(response.data.error);\nexpect(response.status).to.equal(200); // expected response status 400\nassert(!response.data.error);",
+              "err": {},
+              "uuid": "2663572a-f28c-4749-a979-ba4686d2b48f",
+              "parentUUID": "25ebb250-ec2f-4a0e-a569-236e5d592f14",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Perform request to the API with a restricted method",
+              "fullTitle": "Currency Exchange API Perform request to the API with a restricted method",
+              "timedOut": false,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "c06b50fd-3c3d-4c36-b9c7-508db55e2e4d",
+              "parentUUID": "25ebb250-ec2f-4a0e-a569-236e5d592f14",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "041dc2eb-12a6-43e2-9214-34db9ebff042",
+            "46a1af15-ad4b-49a1-9804-3d2a0a09021f",
+            "2663572a-f28c-4749-a979-ba4686d2b48f"
+          ],
+          "failures": [],
+          "pending": [
+            "c06b50fd-3c3d-4c36-b9c7-508db55e2e4d"
+          ],
+          "skipped": [],
+          "duration": 525,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "6d25cd85-574c-4660-afb7-4d008d4ea981",
+          "title": "News Sentiment API",
+          "fullFile": "/Users/kod/payrails-alphavantage-test/api-tests/news_sentiment_api.js",
+          "file": "/api-tests/news_sentiment_api.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify a valid request to the News Sentiment API",
+              "fullTitle": "News Sentiment API Verify a valid request to the News Sentiment API",
+              "timedOut": false,
+              "duration": 407,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let tickers = \"GOOG\"; //  AAPL,GOOG,MSFT\nconst request = await axios.get(\n  `${BASE_URL}/query?function=${FUNCTION}&tickers=${tickers}&outputsize=full&apikey=demo&apiKey=${API_KEY}`\n);\nconst response = request.data;\n// Check that the response has a sentiment score\nexpect(response).to.be.an(\"object\");\nassert.equal(response[\"Error Message\"], null);",
+              "err": {},
+              "uuid": "a67a03c6-abb2-4af0-93bb-e73bc4dc5100",
+              "parentUUID": "6d25cd85-574c-4660-afb7-4d008d4ea981",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get news articles with missing or invalid API key",
+              "fullTitle": "News Sentiment API Get news articles with missing or invalid API key",
+              "timedOut": false,
+              "duration": 587,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let tickers = \"AAPL\"; //  AAPL,GOOG,MSFT\nlet API_KEY = \"\";\nconst request = await axios.get(\n  `${BASE_URL}/query?function=${FUNCTION}&tickers=${tickers}&outputsize=full&apiKey=${API_KEY}`\n);\nconst response = request;\n// Check that the response has an error message\nexpect(response.status).to.equal(200);\nassert(!response.data.error);\nassert.property(response.data, \"Error Message\");\nassert.equal(\n  response.data[\"Error Message\"],\n  \"the parameter apikey is invalid or missing. Please claim your free API key on (https://www.alphavantage.co//support/#api-key). It should take less than 20 seconds.\"\n);",
+              "err": {},
+              "uuid": "91003e61-5c8d-45cc-8349-7beb016fe37c",
+              "parentUUID": "6d25cd85-574c-4660-afb7-4d008d4ea981",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get news articles with invalid news with missing required parameters",
+              "fullTitle": "News Sentiment API Get news articles with invalid news with missing required parameters",
+              "timedOut": false,
+              "duration": 437,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let FUNCTION = \"NEWS_ERROR\";\nlet tickers = \"\";\nconst request = await axios.get(`${BASE_URL}/query?&function=${FUNCTION}&tickers=${tickers}&outputsize=full&apiKey=${API_KEY}`);\nconst response = request;\n// Check that the response has an error message\nexpect(response.status).to.equal(200);\nassert.property(response.data, \"Error Message\");",
+              "err": {},
+              "uuid": "d4205c27-2a3c-4174-8e3e-57db367c4edb",
+              "parentUUID": "6d25cd85-574c-4660-afb7-4d008d4ea981",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a67a03c6-abb2-4af0-93bb-e73bc4dc5100",
+            "91003e61-5c8d-45cc-8349-7beb016fe37c",
+            "d4205c27-2a3c-4174-8e3e-57db367c4edb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1431,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
