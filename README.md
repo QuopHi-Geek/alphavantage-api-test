@@ -213,8 +213,25 @@ Expected Results:
 The API returns a list of news articles that are published within the specified time range.
 
 
-
 ### Test Case 4 ###
+Test Description: Get news articles with invalid news with missing required parameters.
+
+Test Steps:
+Send a GET request to the API with the following parameters:
+- function=NEWS_ERROR
+- tickers=NULL
+
+Request URL: https://www.alphavantage.co/query?function=NEWS_ERROR&tickers=NULL&apikey=YOUR_API_KEY
+
+Verify that the response status code is 200.
+Verify that the response body contains an error
+Verify that no news article are retrieved 
+
+Expected Results:
+The API returns an error indicating the parameters are missing or invalid.
+
+
+### Test Case 5 ###
 Test Description: Verify that the API returns a list of news articles that are sorted by relevance.
 
 Test Steps:
