@@ -261,6 +261,6 @@ The API returns a list of news articles that are sorted by relevance.
 
 
 ### Test Results ###
-![Alt text](https://ibb.co/2StxThm "Test Summary")
+![Alt text](https://i.postimg.cc/nztfVBqj/test-report.png)
 
 # payrails-alphavantage-api
