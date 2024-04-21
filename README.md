@@ -47,17 +47,19 @@ npm install mochawesome @faker-js/faker properties-reader rimraf --save
 ### Test Case 1 ###
 Test Description: Get the exchange rate from Bitcoin to Chinese Yuan.
 Test Steps: 
-Send a GET request to the API with the following required parameters:
+1. Send a GET request to the API with the following required parameters:
 - function: CURRENCY_EXCHANGE_RATE
 - from_currency: BTC
 - to_currency: CNY
 - apikey: YOUR_API_KEY
 
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=CNY&apikey=YOUR_API_KEY
-
+<br>
 Expected Response:
-Verify the response status code is 200
-Verify the response body has a JSON object with properties :
+<br>
+2. Verify the response status code is 200
+<br>
+3. Verify the response body has a JSON object with properties :
 - From_Currency Code
 - Exchange Rate
 - To_Currency Code
@@ -66,6 +68,8 @@ Verify the response body has a JSON object with properties :
 - Last Refreshed
 - To_Currency Name
 
+<br>
+
 Expected Results:
 The API returns a exchange rate from Bitcoin to Chinese Yuan.
 
@@ -73,7 +77,7 @@ The API returns a exchange rate from Bitcoin to Chinese Yuan.
 ### Test Case 2 ###
 Test Description: Get the exchange rate from US Dollar to Japanese Yen.
 Test Steps: 
-Send a GET request to the API with the following required parameters: 
+1. Send a GET request to the API with the following required parameters: 
 - function: CURRENCY_EXCHANGE_RATE
 - from_currency: USD
 - to_currency: JPY
@@ -82,8 +86,8 @@ Send a GET request to the API with the following required parameters:
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=YOUR_API_KEY
 
 Expected Response:
-Verify the response Status code is 200
-Verify the response body has a JSON object with properties:
+2. Verify the response Status code is 200
+3. Verify the response body has a JSON object with properties:
 - From_Currency Code
 - Exchange Rate
 - To_Currency Code
@@ -99,7 +103,7 @@ The API returns a exchange rate for US Dollar to Japanese Yen.
 ### Test Case 3###
 Test Description: Get the exchange rate without specifying the API key.
 Test Steps: 
-Send a GET request to the API without specifying the API key with the following parameters:
+1. Send a GET request to the API without specifying the API key with the following parameters:
 - function: CURRENCY_EXCHANGE_RATE
 - from_currency: USD
 - to_currency: JPY
@@ -107,8 +111,8 @@ Send a GET request to the API without specifying the API key with the following 
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY
 
 Expected Response:
-Verify the response Status code is 401
-Verify the response body has a JSON object with properties:
+2. Verify the response Status code is 401
+3. Verify the response body has a JSON object with properties:
 - Error Message
 
 Expected Results:
@@ -118,7 +122,7 @@ The API returns an error message indicating that the API key is required .
 ### Test Case 4 ####
 Test Description: Get the exchange rate from a valid currency to a non-supported/invalid currency.
 Test Steps: 
-Send a GET request to the API with the following required parameters:
+1. Send a GET request to the API with the following required parameters:
 - function: CURRENCY_EXCHANGE_RATE
 - from_currency: USD
 - to_currency: ABC
@@ -127,8 +131,8 @@ Send a GET request to the API with the following required parameters:
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=ABC&apikey=YOUR_API_KEY
 
 Expected Response:
-Verify the response status code is 400
-Response body: JSON object with the following properties:
+2. Verify the response status code is 400
+3. Verify response body has JSON object with the following properties:
 - Error Message
 
 Expected Results:
@@ -138,7 +142,7 @@ The API returns an error message indicating that the to_currency is invalid.
 ### Test Case 5 ###
 Test Description: Get the exchange rate from BTC to USD with missing required parameters. 
 Test Steps: 
-Send a GET request to the API with the following required parameters:
+1. Send a GET request to the API with the following required parameters:
 - function: CURRENCY_EXCHANGE_RATE
 - from_currency: BTC
 - apikey: YOUR_API_KEY
@@ -146,8 +150,8 @@ Send a GET request to the API with the following required parameters:
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&apikey=YOUR_API_KEY
 
 Expected Response:
-Verify the response status code is 400
-Verify the response body has a JSON object with the following properties:
+2. Verify the response status code is 400
+3. Verify the response body has a JSON object with the following properties:
  - Error Message
 
 
@@ -164,16 +168,16 @@ The API returns an error message indicating that the to_currency is missing.
 Test Description: Verify that the API returns a list of news articles that mention the specified ticker.
 
 Test Steps:
-Send a GET request to the API with the following parameters:
+1. Send a GET request to the API with the following parameters:
 - function=NEWS_SENTIMENT
 - tickers=AAPL
 - apikey=YOUR_API_KEY
 
 Request URL: https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=YOUR_API_KEY
 
-Verify that the response status code is 200.
-Verify that the response body contains a list of news articles.
-Verify that each news article in the list contains the specified ticker in its content.
+2. Verify that the response status code is 200.
+3. Verify that the response body contains a list of news articles.
+4. Verify that each news article in the list contains the specified ticker in its content.
 
 Expected Results:
 The API returns a list of news articles that mention the specified ticker.
@@ -182,7 +186,7 @@ The API returns a list of news articles that mention the specified ticker.
 ### Test Case 2###
 Test Description: Get news articles without specifying the API key.
 Test Steps: 
-Send a GET request to the API without specifying the API key with the following parameters:
+1. Send a GET request to the API without specifying the API key with the following parameters:
 - function=NEWS_SENTIMENT
 - tickers=AAPL
 - APIKEY=YOUR_API_KEY
@@ -190,8 +194,8 @@ Send a GET request to the API without specifying the API key with the following 
 Request URL: https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY
 
 Expected Response:
-Verify the response Status code is 401
-Verify the response body has a JSON object with properties:
+2. Verify the response Status code is 401
+3. Verify the response body has a JSON object with properties:
 - Error Message
 
 Expected Results:
@@ -203,7 +207,7 @@ The API returns an error message indicating that the API key is required .
 Test Description: Verify that the API returns a list of news articles that are published within the specified time range.
 
 Test Steps:
-Send a GET request to the API with the following parameters:
+1. Send a GET request to the API with the following parameters:
 - function=NEWS_SENTIMENT
 - tickers=AAPL
 - time_from=20220410T0130
@@ -214,9 +218,9 @@ Send a GET request to the API with the following parameters:
 
 Request URL: https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&time_from=20220410T0130&time_to=20220410T0230&apikey=YOUR_API_KEY
 
-Verify that the response status code is 200.
-Verify that the response body contains a list of news articles.
-Verify that each news article in the list was published on or after the specified time.
+2. Verify that the response status code is 200.
+3. Verify that the response body contains a list of news articles.
+4. Verify that each news article in the list was published on or after the specified time.
 
 Expected Results:
 The API returns a list of news articles that are published within the specified time range.
@@ -226,15 +230,15 @@ The API returns a list of news articles that are published within the specified 
 Test Description: Get news articles with invalid news with missing required parameters.
 
 Test Steps:
-Send a GET request to the API with the following parameters:
+1. Send a GET request to the API with the following parameters:
 - function=NEWS_ERROR
 - tickers=NULL
 
 Request URL: https://www.alphavantage.co/query?function=NEWS_ERROR&tickers=NULL&apikey=YOUR_API_KEY
 
-Verify that the response status code is 200.
-Verify that the response body contains an error
-Verify that no news article are retrieved 
+2. Verify that the response status code is 200.
+3. Verify that the response body contains an error
+4. Verify that no news article are retrieved 
 
 Expected Results:
 The API returns an error indicating the parameters are missing or invalid.
@@ -244,7 +248,7 @@ The API returns an error indicating the parameters are missing or invalid.
 Test Description: Verify that the API returns a list of news articles that are sorted by relevance.
 
 Test Steps:
-Send a GET request to the API with the following parameters:
+1. Send a GET request to the API with the following parameters:
 function=NEWS_SENTIMENT
 tickers=AAPL
 sort=RELEVANCE
@@ -252,9 +256,9 @@ apikey=YOUR_API_KEY
 
 Request URL: https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&sort=RELEVANCE&apikey=YOUR_API_KEY
 
-Verify that the response status code is 200.
-Verify that the response body contains a list of news articles.
-Verify that the news articles in the list are sorted by relevance.
+2. Verify that the response status code is 200.
+3. Verify that the response body contains a list of news articles.
+4. Verify that the news articles in the list are sorted by relevance.
 
 Expected Results:
 The API returns a list of news articles that are sorted by relevance.
