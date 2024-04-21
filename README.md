@@ -145,7 +145,9 @@ Verify the response body has a JSON object with the following properties:
 Expected Results:
 The API returns an error message indicating that the to_currency is missing.
 
-
+<br>
+<br>
+<br>
 
 <h3> Manual Test Cases for the News Sentiment API Endpoint </h3>
 
